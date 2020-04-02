@@ -81,13 +81,13 @@ def game_loop():
             #-----------------
             #failed wall atemped
             #-----------------
-            if x == 640:
+            if x > 640:
                 end = True
-            elif x == 0:
+            elif x < 0:
                 end = True
-            elif y == 480:
+            elif y > 480:
                 end = True
-            elif y == 0:
+            elif y < 0:
                 end = True
 
         #----------------
