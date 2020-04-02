@@ -57,6 +57,17 @@ def game_loop():
     #main loop 
     #-----------------
     while not end:
+        #-----------------
+        #WALL
+        #-----------------
+        if x > 640:
+            end = True
+        elif x < 0:
+            end = True
+        elif y > 480:
+            end = True
+        elif y < 0:
+            end = True
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 end = True
@@ -77,19 +88,6 @@ def game_loop():
                     y_change = 8
                     x_change = 0
                     #y_change = 8
-         
-            #-----------------
-            #failed wall atemped
-            #-----------------
-            if x > 640:
-                end = True
-            elif x < 0:
-                end = True
-            elif y > 480:
-                end = True
-            elif y < 0:
-                end = True
-
         #----------------
         #set up coradnate stuff
         #----------------        
