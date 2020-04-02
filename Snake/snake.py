@@ -65,33 +65,19 @@ def game_loop():
                 #----------------
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    direction = 0
-                    #x_change = -8 
+                    x_change = -8
+                    y_change = 0
                 elif event.key == pygame.K_RIGHT:
-                    direction = 180
-                    #x_change = 8
+                    x_change = 8
+                    y_change = 0
                 elif event.key == pygame.K_UP:
-                    direction = 90
-                    #y_change = -8
+                    y_change = -8
+                    x_change = 0
                 elif event.key == pygame.K_DOWN:
-                    direction = 270
+                    y_change = 8
+                    x_change = 0
                     #y_change = 8
-          
-            #-----------------
-            #auto move
-            #-----------------
-            if direction == 0:
-                x_change = -8
-                y_change = 0
-            elif direction == 180:
-                x_change = 8
-                y_change = 0
-            elif direction == 90:
-                y_change = -8
-                x_change = 0
-            elif direction == 270:
-                y_change = 8
-                x_change = 0
+         
             #-----------------
             #failed wall atemped
             #-----------------
