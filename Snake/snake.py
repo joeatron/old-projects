@@ -76,14 +76,7 @@ def game_loop():
                 elif event.key == pygame.K_DOWN:
                     direction = 270
                     #y_change = 8
-            #-----------------
-            #let go reset
-            #-----------------
-            if event.type == pygame.KEYUP:
-                if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-                    x_change = 0
-                elif event.key == pygame.K_UP or event.key == pygame.K_DOWN:
-                    y_change = 0
+          
             #-----------------
             #auto move
             #-----------------
