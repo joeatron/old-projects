@@ -17,8 +17,8 @@
 ;		USER VARIABLES
 ;----------------------------------------------------------
 		RSSET	USERRAM
-player1X:		RS.W	1			;player1'S X POSITION
-player1Y:		RS.W	1			;player1'S Y POSITION
+player1X:	RS.W	1			;player1'S X POSITION
+player1Y:	RS.W	1			;player1'S Y POSITION
 BALLX:		RS.W	1			;BALL'S X POSITION
 BALLY:		RS.W	1			;BALL'S Y POSITION
 BALLD:		RS.W	1			;BALL'S DIRECTION
@@ -110,48 +110,51 @@ MAIN:		WAITVBI					;WAITS FOR THE START OF THE NEXT FRAME
 		move.w 	player1X,d0			;put player1X in to d0
 		
 		cmp.w	#1,d5				;if d5 (BALLD) = 0
-		beq		@right				;goto right
+		beq	@right				;goto right
 		
 		add.w	#8,D0				;adds 8 to D0 (player1X)
 		cmp.w 	D0,D3				;if d3 = d0
-		beq		@dumb1				;goto dumb1
-		jmp		@BALL_CODE			;goto BALL_CODE
+		beq	@dumb1				;goto dumb1
+		jmp	@BALL_CODE			;goto BALL_CODE
 
 @right:
 		sub.w	#8,D1				;adds 8 to D1 (player2x)
 		cmp.w 	D1,D3				;If D1(player2X) = D3(BALLX)
-		beq		@up					;goto up
-		jmp		@BALL_CODE			;goto BALL_CODE
+		beq	@dumb2
+;		beq	@up				;goto up
+		jmp	@BALL_CODE			;goto BALL_CODE
 		
-@up:
-		move	player1Y,D1			;put player1Y in to D1	
-		sub.w	#8,D1				;sub 8 to D1 (player2x)
-		cmp.w	D1,BALLY			;If D1 = BALLY 
-		beq		
-		
+;--------Later Code for if player 1 misses the ball--------
+;@up:							
+;		move	player1Y,D1			;put player1Y in to D1	
+;		sub.w	#8,D1				;sub 8 to D1 (player2x)
+;		cmp.w	D1,BALLY			;If D1 = BALLY 
+;		beq		
+;-----------------------------------------------------------
 
 @dumb1:
 		MOVE.W	#1,BALLD     		;put 0 in BALLD (changes direction) 
-		jmp		@BALL_CODE			;goto BALL_CODE
+		jmp	@BALL_CODE			;goto BALL_CODE
 
 
 @dumb2:
 		MOVE.W	#0,BALLD     		;put 1 in BALLD
 
 @BALL_CODE:
-		cmp.w	#0,	d5				;if d5 = 0
-		beq		@skip				;goto skip
-		add.w	#2, BALLX			;add 2 to ballX
+		cmp.w	#0,d5				;if d5 = 0
+		beq	@skip				;goto skip
+		add.w	#2,BALLX			;add 2 to ballX
 @skip:
-		sub.w	#1, BALLX			;sub 1 to ballX
+		sub.w	#1,BALLX			;sub 1 to ballX
 	
 ;@miss:
 	
 	
- ;---soon to be top and bottom barrier---		
+;---soon to be top and bottom barrier---		
 ;		move.w	,d0
 ;		move.w	,d1
 ;		cmp.w	
+;---------------------------------------
 
 ;MOVE player1
 		BTST	#J_DOWN,JOYPAD0
